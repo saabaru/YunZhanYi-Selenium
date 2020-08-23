@@ -1,5 +1,5 @@
 #
-# Auto-puncher for wan4zin3jik6
+# Auto-puncher for YunZhanYi
 #
 import time
 import logging
@@ -71,7 +71,7 @@ logger = logging.getLogger(__name__)
 ssl._create_default_https_context = ssl._create_unverified_context  # avoid SSLCertVerificationError
 
 
-class WanZinJikPuncher:
+class YunZhanYiPuncher:
 
     def __init__(self, graphic=False, image=False, timeout=10):
         options = webdriver.ChromeOptions()
@@ -119,7 +119,7 @@ class WanZinJikPuncher:
 
         self._wait_until(element_to_be_clickable((By.ID, 'fav_epidemic')))
         self._driver.find_element_by_id('fav_epidemic').click()
-        logger.info('open wan4zin3jik6')
+        logger.info('open yunzhanyi')
 
         windows = self._driver.window_handles
         self._driver.switch_to.window(windows[-1])
@@ -191,7 +191,7 @@ SUCCESS_MESSAGE = '''### **打卡成功**
 
 **返回状态:** %s
 
-> ###### WanZinJikPuncher v0.1-beta'''
+> ###### YunZhanYiPuncher v0.1-beta'''
 
 ERROR_MESSAGE = '''### **打卡失败**
 %s'''
@@ -206,7 +206,7 @@ if __name__ == '__main__':
             parser.print_help()
             exit(1)
         ding = DingTalkClient(args.password[1], args.password[2])
-    puncher = WanZinJikPuncher(args.graphic, args.image, args.timeout)
+    puncher = YunZhanYiPuncher(args.graphic, args.image, args.timeout)
     start = time.time()
 
     try:
